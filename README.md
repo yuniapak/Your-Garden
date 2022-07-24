@@ -2,7 +2,7 @@
 
 ### App that makes your gardening decisions easier
 
-## [Trello]https://trello.com/b/W2bjDX2D/your-garden |
+## [Trello](https://trello.com/b/W2bjDX2D/your-garden)
 
 ## About:
 
@@ -25,10 +25,10 @@ Gardening is easier than you think, specially with 'Your Garden' app,
 ## Diagrams:
 
 Component Hierarchy
-<img src= './CHD'>
+<img src= './CHD.png'>
 
 Entity Relationship
-<img src= './ERD'>
+<img src= './ERD.png'>
 
 ---
 
