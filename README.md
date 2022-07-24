@@ -2,7 +2,7 @@
 
 ### App that makes your gardening decisions easier
 
-## [Trello](https://trello.com/b/W2bjDX2D/your-garden)
+## [Trello](https://trello.com/invite/b/W2bjDX2D/064d3f31f488844262712c4c07b8bdb8/your-garden)
 
 ## About:
 
