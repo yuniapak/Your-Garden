@@ -5,7 +5,8 @@ const controllers = require('../controllers/controllers.js')
 router.get('/', (req, res) => res.send('Landing page'))
 router.get('/plant', controllers.getAllPlants)
 router.get('/plant/:id', controllers.getPlantById)
-router.post('/yourGarden', controllers.createCart)
-router.put('/yourGarden/:id', controllers.updateCart)
+//Cart create and update plants array
+router.post('/yourNewGarden', controllers.createCart)
+router.put('/yourNewGarden/:id', controllers.updatePlantCart)
 
 module.exports = router

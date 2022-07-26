@@ -55,15 +55,10 @@ const main = async () => {
   const zucchini = await Plant.find({ Name: 'Zucchini' })
   console.log(String(basil[0]._id))
   const fit = [
-    {
-      Name: asparagus[0].name,
-      fit: [
-        String(basil[0]._id),
-        String(chives[0]._id),
-        String(parsley[0]._id),
-        String(tomato[0]._id)
-      ]
-    }
+    // {
+    //   Name: asparagus[0]._id,
+    //   fit: [basil[0]._id, chives[0]._id, parsley[0]._id, tomato[0]._id]
+    // },
     // {
     //   Name: basil[0]._id,
     //   fit: [asparagus[0]._id, cucumber[0]._id, fennel[0]._id, tomato[0]._id]
@@ -151,7 +146,7 @@ const main = async () => {
     //   notFit: [strawberry[0]._id]
     // },
     // {
-    //   Name: brussel._id,
+    //   Name: brussel[0]._id,
     //   fit: [
     //     beans[0]._id,
     //     broadB[0]._id,
@@ -167,7 +162,7 @@ const main = async () => {
     //   ]
     // },
     // {
-    //   Name: cabbage._id,
+    //   Name: cabbage[0]._id,
     //   fit: [
     //     beans[0]._id,
     //     broadB[0]._id,
@@ -175,14 +170,12 @@ const main = async () => {
     //     climbingB[0]._id,
     //     beets[0]._id,
     //     celery[0]._id,
-    //     ,
     //     coriander[0]._id,
     //     cucumber[0]._id,
     //     dill[0]._id,
     //     lavender[0]._id,
     //     lettuce[0]._id,
     //     mint[0]._id,
-    //     ,
     //     onion[0]._id,
     //     potatoes[0]._id,
     //     rosemary[0]._id,
@@ -190,12 +183,12 @@ const main = async () => {
     //     thyme[0]._id
     //   ],
     //   notFit: [garlic[0]._id, strawberry[0]._id]
-    // },
+    // }
     // {
     //   Name: chamomile[0]._id,
     //   fit: [cabbage[0]._id],
     //   notFit: [mint[0]._id]
-    // },
+    // }
     // {
     //   Name: carrot[0]._id,
     //   fit: [
@@ -229,7 +222,7 @@ const main = async () => {
     //     tomato[0]._id
     //   ],
     //   notFit: [strawberry[0]._id]
-    // },
+    // }
     // {
     //   Name: chives[0]._id,
     //   fit: [
@@ -245,8 +238,7 @@ const main = async () => {
     // },
     // {
     //   Name: coriander[0]._id,
-    //   fit: [cabbage[0]._id, carrot[0]._id, dill[0]._id, parsley[0]._id],
-    //   notFit: ['']
+    //   fit: [cabbage[0]._id, carrot[0]._id, dill[0]._id, parsley[0]._id]
     // },
     // {
     //   Name: corn[0]._id,
@@ -298,7 +290,7 @@ const main = async () => {
     //     tomato[0]._id,
     //     zucchini[0]._id
     //   ]
-    // },
+    // }
     // {
     //   Name: eggplant[0]._id,
     //   fit: [beans[0]._id, potatoes[0]._id]
@@ -386,7 +378,7 @@ const main = async () => {
     // {
     //   Name: mustard[0]._id,
     //   fit: [tree[0]._id, grape[0]._id]
-    // },
+    // }
     // {
     //   Name: onion[0]._id,
     //   fit: [
@@ -517,37 +509,37 @@ const main = async () => {
     //     spinach[0]._id
     //   ],
     //   notFit: [cabbage[0]._id, garlic[0]._id]
-    // },
-    // {
-    //   Name: sunflower[0]._id,
-    //   fit: [bushB[0]._id, brussel[0]._id, cucumber[0]._id, squash[0]._id],
-    //   notFit: [climbingB[0]._id, potatoes[0]._id]
-    // },
-    // {
-    //   Name: thyme[0]._id,
-    //   fit: [cabbage[0]._id]
-    // },
-    // {
-    //   Name: tomato[0]._id,
-    //   fit: [
-    //     basil[0]._id,
-    //     carrot[0]._id,
-    //     celery[0]._id,
-    //     chives[0]._id,
-    //     dill[0]._id,
-    //     grape[0]._id,
-    //     mint[0]._id,
-    //     onion[0]._id,
-    //     parsley[0]._id,
-    //     parsnip[0]._id
-    //   ],
-    //   notFit: [beets[0]._id, cabbage[0]._id, fennel[0]._id, rosemary[0]._id]
-    // },
-    // {
-    //   Name: zucchini[0]._id,
-    //   fit: [beans[0]._id, corn[0]._id, dill[0]._id, garlic[0]._id, mint[0]._id],
-    //   notFit: [cucumber[0]._id, pumpkin[0]._id, melon[0]._id]
     // }
+    {
+      Name: sunflower[0]._id,
+      fit: [bushB[0]._id, brussel[0]._id, cucumber[0]._id, squash[0]._id],
+      notFit: [climbingB[0]._id, potatoes[0]._id]
+    },
+    {
+      Name: thyme[0]._id,
+      fit: [cabbage[0]._id]
+    },
+    {
+      Name: tomato[0]._id,
+      fit: [
+        basil[0]._id,
+        carrot[0]._id,
+        celery[0]._id,
+        chives[0]._id,
+        dill[0]._id,
+        grape[0]._id,
+        mint[0]._id,
+        onion[0]._id,
+        parsley[0]._id,
+        parsnip[0]._id
+      ],
+      notFit: [beets[0]._id, cabbage[0]._id, fennel[0]._id, rosemary[0]._id]
+    },
+    {
+      Name: zucchini[0]._id,
+      fit: [beans[0]._id, corn[0]._id, dill[0]._id, garlic[0]._id, mint[0]._id],
+      notFit: [cucumber[0]._id, pumpkin[0]._id, melon[0]._id]
+    }
   ]
   await Fit.insertMany(fit)
   console.log('New fit plants', fit)

@@ -42,7 +42,7 @@ const createCart = async (req, res) => {
 //     throw error
 //   }
 // }
-updatePlantCart = async (req, res) => {
+const updatePlantCart = async (req, res) => {
   try {
     const newPlant = await Cart.findByIdAndUpdate(
       { _id: req.params.id },
