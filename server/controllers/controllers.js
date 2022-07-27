@@ -10,9 +10,18 @@ const getAllPlants = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
-const getPlantById = async (req, res) => {
+const getPlantByName = async (req, res) => {
   try {
-    const plant = await Plant.findById(req.params.id)
+    let plantName = req.query.search
+    const plant = await Plant.find({ Name: plantName })
+    res.send(plant)
+  } catch (error) {
+    throw error
+  }
+}
+const findOne = async (req, res) => {
+  try {
+    const plant = await Plant.findOne({ Name })
     res.send(plant)
   } catch (error) {
     throw error
@@ -26,22 +35,7 @@ const createCart = async (req, res) => {
     throw error
   }
 }
-// const updateCart = async (req, res) => {
-//   try {
-//     const { id } = req.params
-//     await Cart.findByIdAndUpdate(id, req.body, { new: true }, (err, cart) => {
-//       if (err) {
-//         res.status(500).send(err)
-//       }
-//       if (!cart) {
-//         res.status(500).send('Cart not found!')
-//       }
-//       return res.status(200).json(cart)
-//     })
-//   } catch (error) {
-//     throw error
-//   }
-// }
+
 const updatePlantCart = async (req, res) => {
   try {
     const newPlant = await Cart.findByIdAndUpdate(
@@ -53,10 +47,21 @@ const updatePlantCart = async (req, res) => {
     throw error
   }
 }
+const deletePlantFromCart = async (req, res) => {
+  try {
+    const objId = req.params.id
+    const deletePlant = await Cart.destroy({ where: { id: objectId } })
+    res.send({ msg: `object with ID ${objId} delete` })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   getAllPlants,
-  getPlantById,
+  getPlantByName,
   createCart,
-  updatePlantCart
+  updatePlantCart,
+  deletePlantFromCart,
+  findOne
 }
