@@ -12,7 +12,20 @@ header{
   background-color: rgb(51, 74, 66);
   padding:10px;
 }
-
+.plant{
+  background: rgb(51, 74, 66);
+  margin: 20px;
+  padding:10px;
+}
+.allPlants{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.allPlants button{
+  background:  rgb(219, 230, 217);
+  border-radius: 130px;
+  border: solid ;
+}
 a{
   color: rgb(224, 230, 223);
   text-decoration: none;

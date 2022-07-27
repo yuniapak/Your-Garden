@@ -21,6 +21,7 @@ const getPlantByName = async (req, res) => {
 }
 const findOne = async (req, res) => {
   try {
+    const { Name } = req.params
     const plant = await Plant.findOne({ Name })
     res.send(plant)
   } catch (error) {
@@ -38,13 +39,13 @@ const createCart = async (req, res) => {
 
 const updatePlantCart = async (req, res) => {
   try {
-    const newPlant = await Cart.findByIdAndUpdate(
-      { _id: req.params.id },
-      { $push: { plants: { $each: req.body.plants } } }
-    )
+    const { id } = req.params
+    const newPlant = await Cart.findByIdAndUpdate(id, {
+      $push: { plants: req.body.plant }
+    })
     res.json({ newPlant })
   } catch (error) {
-    throw error
+    console.log(error)
   }
 }
 const deletePlantFromCart = async (req, res) => {
@@ -56,6 +57,14 @@ const deletePlantFromCart = async (req, res) => {
     throw error
   }
 }
+const getCartElem = async (req, res) => {
+  try {
+    const elements = await Cart.find()
+    res.send(elements)
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   getAllPlants,
@@ -63,5 +72,6 @@ module.exports = {
   createCart,
   updatePlantCart,
   deletePlantFromCart,
-  findOne
+  findOne,
+  getCartElem
 }
