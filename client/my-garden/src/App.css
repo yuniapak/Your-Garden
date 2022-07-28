@@ -44,6 +44,12 @@ input{
   padding: 10px;
   margin: 20px;
 }
+.delete{
+  position:relative;
+  left:220px;
+  top: 90px;
+
+}
 button{
   padding: 10px;
   background-color: rgb(224, 230, 223);

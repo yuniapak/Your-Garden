@@ -48,11 +48,13 @@ const updatePlantCart = async (req, res) => {
     console.log(error)
   }
 }
-const deletePlantFromCart = async (req, res) => {
+const deleteCart = async (req, res) => {
   try {
     const objId = req.params.id
-    const deletePlant = await Cart.destroy({ where: { id: objectId } })
-    res.send({ msg: `object with ID ${objId} delete` })
+    const deletePlant = await Cart.findByIdAndDelete(objId)
+    // {where: { plants_id}})
+    // plants.splice(plants_id.indexOf, 0) })
+    res.send({ msg: `object with ID ${plants._id} delete` })
   } catch (error) {
     throw error
   }
@@ -65,13 +67,22 @@ const getCartElem = async (req, res) => {
     throw error
   }
 }
+// const getPlantById = async (req, res) => {
+//   try {
+//     const plant = await Plant.findById(req.query._id)
+//     res.send(plant)
+//   } catch (error) {
+//     throw error
+//   }
+// }
 
 module.exports = {
   getAllPlants,
   getPlantByName,
   createCart,
   updatePlantCart,
-  deletePlantFromCart,
+  deleteCart,
   findOne,
   getCartElem
+  // getPlantById
 }

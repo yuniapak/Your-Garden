@@ -3,21 +3,11 @@ import axios from 'axios'
 import Search from '../components/Search'
 import PlantCard from '../components/PlantCard'
 
-const MyGarden = () => {
+const MyGarden = (props) => {
+  const allPlants = props.allPlants
   const [searchResults, setSearchResults] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [searched, setSearched] = useState(false)
-  const [allPlants, setAllPlants] = useState([])
-
-  const getPlants = async () => {
-    const res = await axios.get(`http://localhost:3001/api/plant`)
-    setAllPlants(res.data)
-    console.log(res.data)
-  }
-
-  useEffect(() => {
-    getPlants()
-  }, [])
 
   const getSearchResults = async (e) => {
     e.preventDefault()

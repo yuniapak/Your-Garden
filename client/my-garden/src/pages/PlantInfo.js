@@ -6,16 +6,14 @@ import axios from 'axios'
 const PlantInfo = (props) => {
   const [plant, setPlant] = useState('')
 
-  //   useEffect(() => {
-  //     const getPlant = async () => {
-  //       const result = await axios.get(
-  //         `http://localhost:3001/api/plant/:Name=${props.searchResult}`
-  //       )
-  //       setPlant(result.data)
-  //       console.log(result.data)
-  //     }
-  //     getPlant()
-  //   }, [])
+  let { id } = useParams()
+  useEffect(() => {
+    let selectedPlant = props.allPlants.find(
+      (plant) => plant.id === parseInt(id)
+    )
+    setPlant(selectedPlant)
+  }, [props.allPlants, id])
+  console.log(plant)
 
   return plant ? (
     <div>

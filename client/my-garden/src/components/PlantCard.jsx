@@ -2,14 +2,14 @@ import React from 'react'
 import{Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-
+import {useNavigate} from 'react-router-dom'
 
 
 const PlantCard = (props) =>{
     let searchResults = props.searchResults
-    const cartId = '62e16d5c4a972c2717f393ea'
+    const cartId = '62e1da9db86f7b8b6da74b83'
     const [plantcart, postPlantCart] = useState([])
-
+//update Cart onClick
 const getPlant= async(selectedPlant) =>{
     const plant = await axios.get(`http://localhost:3001/api/plant/${selectedPlant}`)
 return (plant.data._id)
@@ -21,8 +21,10 @@ console.log(plantId)
             }
   
     
-
-
+let navigate = useNavigate()
+const showPlant = (plant) => {
+navigate(`${plant.id}`)
+}
 //Maping through all elements before searched
     {
         if (props.searched != true) {
@@ -33,9 +35,10 @@ console.log(plantId)
                   <img src={plant.image} alt="image is missing" />
                   <h3>{plant.Name}</h3>
                   <button id={plant.Name} type='submit' onClick={addToCart}>Add</button>
-                  <Link to="/plantInfo" searchResults={searchResults}>
+                  <Link to="/plantInfo" onClick={()=> showPlant(plant)}>
                     More information
                   </Link>
+                
                 </div>
               ))}
             </div>
@@ -52,8 +55,8 @@ console.log(plantId)
             <div key = {plant.Name} onClick={props.onClick} className='plant'>
             <img src={plant.image} alt='image is missing'/>
             <h3>{plant.Name}</h3>
-            <button >Add</button>
-            <Link to = '/plantInfo' searchResults={searchResults}>More information</Link>
+            <button id={plant.Name} type='submit' onClick={addToCart}>Add</button>
+            <Link to = '/plantInfo' onClick={()=> showPlant(plant)}>More information</Link>
             </div>
             ))
             }
