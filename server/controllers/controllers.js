@@ -50,11 +50,9 @@ const updatePlantCart = async (req, res) => {
 }
 const deleteCart = async (req, res) => {
   try {
-    const objId = req.params.id
-    const deletePlant = await Cart.findByIdAndDelete(objId)
-    // {where: { plants_id}})
-    // plants.splice(plants_id.indexOf, 0) })
-    res.send({ msg: `object with ID ${plants._id} delete` })
+    const { id } = req.params
+    const deleted = await Cart.findByIdAndDelete(id)
+    res.send({ msg: `object with ID ${id} delete` })
   } catch (error) {
     throw error
   }

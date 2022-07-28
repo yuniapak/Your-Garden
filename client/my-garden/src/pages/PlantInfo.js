@@ -3,17 +3,17 @@ import { useParams } from 'react-router-dom'
 import PlantCard from '../components/PlantCard'
 import MyGarden from './MyGarden'
 import axios from 'axios'
-const PlantInfo = (props) => {
-  const [plant, setPlant] = useState('')
 
-  let { id } = useParams()
+const PlantInfo = (props) => {
+  const [plant, setPlant] = useState([])
+  console.log(props)
+  let { Name } = useParams()
   useEffect(() => {
     let selectedPlant = props.allPlants.find(
-      (plant) => plant.id === parseInt(id)
+      (plant) => plant.Name === parseInt(Name)
     )
     setPlant(selectedPlant)
-  }, [props.allPlants, id])
-  console.log(plant)
+  }, [props.allPlants, Name])
 
   return plant ? (
     <div>

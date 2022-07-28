@@ -3,13 +3,14 @@ import{Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-
+import PlantInfo from '../pages/PlantInfo'
 
 const PlantCard = (props) =>{
     let searchResults = props.searchResults
-    const cartId = '62e1da9db86f7b8b6da74b83'
+    const cartId = props.cartInUse
     const [plantcart, postPlantCart] = useState([])
 //update Cart onClick
+console.log(cartId)
 const getPlant= async(selectedPlant) =>{
     const plant = await axios.get(`http://localhost:3001/api/plant/${selectedPlant}`)
 return (plant.data._id)
@@ -27,7 +28,7 @@ navigate(`${plant.id}`)
 }
 //Maping through all elements before searched
     {
-        if (props.searched != true) {
+        if (props.searchQuery == '') {
           return (
             <div className='allPlants'>
               {props.allPlants.map((plant) => (
@@ -38,7 +39,7 @@ navigate(`${plant.id}`)
                   <Link to="/plantInfo" onClick={()=> showPlant(plant)}>
                     More information
                   </Link>
-                
+                <PlantInfo searchResults={searchResults}/>
                 </div>
               ))}
             </div>
