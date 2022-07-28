@@ -45,7 +45,7 @@ const App = () => {
             element={<MyGarden allPlants={allPlants} cartInUse={cartInUse} />}
           />
           <Route
-            path="/yourNewGarden/*"
+            path="/yourNewGarden"
             element={
               <Cart
                 allPlants={allPlants}
@@ -55,7 +55,7 @@ const App = () => {
             }
           />
           <Route
-            path="/plantInfo"
+            path="/plant/1"
             element={<PlantInfo allPlants={allPlants} />}
           />
         </Routes>

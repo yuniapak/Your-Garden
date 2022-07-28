@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = (props) => {
   let cart = []
   const allPlants = props.allPlants
   const cartElements = props.cartElements
-
+  const navigate = useNavigate()
   cartElements.map((elem) => {
     allPlants.filter((plant) => {
       if (elem == plant._id) {
@@ -28,9 +28,9 @@ const Cart = (props) => {
       .delete(`http://localhost:3001/api/yourNewGarden/${props.cartInUse}`)
       .then((res) => {
         console.log(res.status)
+        window.location.reload(false)
       })
-    console.log(cartElements)
-    //import navigate('/yourNewGarden') and useNavigate
+    //  console.log(cartElements)
   }
 
   console.log(cart)
@@ -40,7 +40,9 @@ const Cart = (props) => {
     <div>
       <h2>Your plants:</h2>
       <div className="cartButtons">
-        <button onClick={deleteCart}>Delete Cart</button>
+        <button type="submit" onClick={() => deleteCart()}>
+          Clear Cart
+        </button>
         <button onClick={createNewCart}>Create New Cart</button>
       </div>
       <div className="Cart">
@@ -51,6 +53,7 @@ const Cart = (props) => {
             </button>
             <h3>{elem.Name}</h3>
             <img src={elem.image} />
+            <h4>Best planted with: {elem.fit}</h4>
           </div>
         ))}
       </div>

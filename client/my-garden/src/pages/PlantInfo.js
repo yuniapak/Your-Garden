@@ -1,30 +1,29 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import PlantCard from '../components/PlantCard'
-import MyGarden from './MyGarden'
-import axios from 'axios'
-
+import { useLocation } from 'react-router-dom'
 const PlantInfo = (props) => {
-  const [plant, setPlant] = useState([])
-  console.log(props)
-  let { Name } = useParams()
-  useEffect(() => {
-    let selectedPlant = props.allPlants.find(
-      (plant) => plant.Name === parseInt(Name)
-    )
-    setPlant(selectedPlant)
-  }, [props.allPlants, Name])
+  let plantName = ''
+  const plant = props.plant
+  let location = useLocation()
+  const initialState = {
+    name: `${location.state.plant.Name}`,
+    image: `${location.state.plant.image}`,
+    about: `${location.state.plant.about}`,
+    grow: `${location.state.plant.grow}`,
+    water: `${location.state.plant.watering}`,
+    fit: `${location.state.plant.fit}`,
+    notfit: `${location.state.plant.notFit}`
+  }
 
-  return plant ? (
+  console.log(initialState)
+  return (
     <div>
-      <div key={plant.Name}>
-        <h3>{plant.Name}</h3>
-        <h4>{plant.watering}</h4>
-        <h4>{plant.grow}</h4>
-        <img src={plant.image} />
-        <p>{plant.about}</p>
-      </div>
+      <h3>{initialState.name}</h3>
+      <img src={location.state.plant.image} />
+      <h4>Reach maturity in {initialState.grow}</h4>
+      <h4>Water: {initialState.water}</h4>
+      <h4>Companion planting best with {initialState.fit}</h4>
+      <h4>About:</h4>
+      <p>{initialState.about}</p>
     </div>
-  ) : null
+  )
 }
 export default PlantInfo
