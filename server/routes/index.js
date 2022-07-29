@@ -11,6 +11,7 @@ router.get('/yourNewGarden', controllers.getCartElem)
 //Cart create and update plants array
 router.post('/yourNewGarden', controllers.createCart)
 router.put('/yourNewGarden/:id', controllers.updatePlantCart)
+router.put('/yourNewGarden/c/:id', controllers.updateCartElement)
 router.delete('/yourNewGarden/:id', controllers.deleteCart)
 
 module.exports = router

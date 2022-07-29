@@ -65,14 +65,17 @@ const getCartElem = async (req, res) => {
     throw error
   }
 }
-// const getPlantById = async (req, res) => {
-//   try {
-//     const plant = await Plant.findById(req.query._id)
-//     res.send(plant)
-//   } catch (error) {
-//     throw error
-//   }
-// }
+const updateCartElement = async (req, res) => {
+  try {
+    const { id } = req.params
+    const newCart = await Cart.findByIdAndUpdate(id, {
+      $pull: { plants: req.body.plantId }
+    })
+    res.json({ newCart })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   getAllPlants,
@@ -81,6 +84,7 @@ module.exports = {
   updatePlantCart,
   deleteCart,
   findOne,
-  getCartElem
+  getCartElem,
+  updateCartElement
   // getPlantById
 }

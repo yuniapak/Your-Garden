@@ -14,6 +14,7 @@ const App = () => {
   const [allPlants, setAllPlants] = useState([])
   const [cartElements, setCartElements] = useState([])
   const [cartInUse, setCartInUse] = useState('')
+  const [wholeCart, setWholeCart] = useState([])
 
   const getPlants = async () => {
     const res = await axios.get(`http://localhost:3001/api/plant`)
@@ -28,13 +29,17 @@ const App = () => {
   const getCart = async () => {
     const res = await axios.get(`http://localhost:3001/api/yourNewGarden`)
     setCartElements(res.data[0].plants)
+    setWholeCart(res.data[0])
+    console.log(res.data[0])
     //  console.log(res.data[0].plants)
     setCartInUse(res.data[0]._id)
   }
+
   return (
     <div>
       <header>
-        <h1>Garden</h1>
+        <img src="../logoplant/logo3.png" className="logo" />
+        <h1>Your Garden</h1>
         <Nav />
       </header>
       <main>
@@ -51,11 +56,12 @@ const App = () => {
                 allPlants={allPlants}
                 cartElements={cartElements}
                 cartInUse={cartInUse}
+                wholeCart={wholeCart}
               />
             }
           />
           <Route
-            path="/plant/1"
+            path="/plant/*"
             element={<PlantInfo allPlants={allPlants} />}
           />
         </Routes>

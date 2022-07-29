@@ -7,7 +7,9 @@ const Cart = (props) => {
   let cart = []
   const allPlants = props.allPlants
   const cartElements = props.cartElements
-  const navigate = useNavigate()
+  const wholeCart = props.wholeCart
+
+  //match id for information about plant to display
   cartElements.map((elem) => {
     allPlants.filter((plant) => {
       if (elem == plant._id) {
@@ -17,11 +19,12 @@ const Cart = (props) => {
   })
   console.log(cartElements)
 
+  //create new cart onclick
   const createNewCart = async () => {
     const result = axios.post(`http://localhost:3001/api/yourNewGarden`)
     console.log('new cart')
   }
-
+  //delete whole cart onclick
   const deleteCart = async () => {
     //const plantId = await cartElements(e.target.id)
     const remove = await axios
@@ -33,7 +36,27 @@ const Cart = (props) => {
     //  console.log(cartElements)
   }
 
-  console.log(cart)
+  // const cartInUse = props.cartInUse
+
+  // const updateCartOfPlants = async (e) => {
+  //   const plantId = e.target.id
+  //   for (let i = 0; i < wholeCart.plants.length; i++) {
+  //     if (plantId == wholeCart.plants[i]) {
+  //       console.log(wholeCart.plants[i])
+  //       const result = await axios
+  //         .put(
+  //           `http://localhost:3001/api/yourNewGarden/yourNewGarden/c/${cartInUse}`,
+  //           { plants: wholeCart.plants[i] }
+  //         )
+  //         .then((res) => {
+  //           console.log(result.status)
+  //           window.location.reload(false)
+  //         })
+  //       //console.log('removed', wholeCart.plants)
+  //     }
+  //   }
+  // }
+
   cart.map((elem) => console.log(elem.Name))
 
   return (
@@ -48,7 +71,12 @@ const Cart = (props) => {
       <div className="Cart">
         {cart.map((elem) => (
           <div key={elem.Name} className="cartElem">
-            <button className="delete" type="submit">
+            <button
+              id={elem._id}
+              className="delete"
+              type="submit"
+              // onClick={updateCartOfPlants}
+            >
               X
             </button>
             <h3>{elem.Name}</h3>
