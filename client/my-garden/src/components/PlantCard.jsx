@@ -19,6 +19,7 @@ return (plant.data._id)
 const addToCart = async (e) => { 
     const plantId = await getPlant(e.target.id) 
     const res = await axios.put(`http://localhost:3001/api/yourNewGarden/${cartId}`,{plant: plantId})
+    console.log(plantId)
     window.location.reload(false)
 }
 

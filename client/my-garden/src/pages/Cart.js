@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 
 const Cart = (props) => {
   let cart = []
+  let bed1 = []
+  let bed2 = []
   const allPlants = props.allPlants
   const cartElements = props.cartElements
-  const wholeCart = props.wholeCart
 
   //match id for information about plant to display
   cartElements.map((elem) => {
@@ -17,12 +15,37 @@ const Cart = (props) => {
       }
     })
   })
-  console.log(cartElements)
+  console.log('plants inside variable Cart', cartElements)
+  //match plants to fit
+  //working but matching in pairs!
+  const fitPlants = () => {
+    for (let i = 0; i < cart.length; i++) {
+      let nextPlant = cart[i++]
+      let fitPlant = cart[i].fit
+      for (let j = 0; j < cart[i].fit.length; j++) {
+        if (
+          nextPlant.Name == cart[i].fit[j] ||
+          nextPlant.fit[j] == cart[i].Name
+        ) {
+          console.log(nextPlant.Name, 'and', cart[i].Name)
+          // bed1.push(nextPlant)
+          // bed1.push(cart[i])
+        } else if (
+          nextPlant.Name == nextPlant.fit[j] ||
+          nextPlant.fit[j] == nextPlant.Name
+        ) {
+          console.log('fit round2', nextPlant.Name, 'and', cart[i++].Name)
+        } else {
+          console.log('no fit', nextPlant.Name, cart[i].Name)
+        }
+      }
+    }
+  }
 
   //create new cart onclick
   const createNewCart = async () => {
     const result = axios.post(`http://localhost:3001/api/yourNewGarden`)
-    console.log('new cart')
+    console.log('new cart made')
   }
   //delete whole cart onclick
   const deleteCart = async () => {
@@ -35,27 +58,6 @@ const Cart = (props) => {
       })
     //  console.log(cartElements)
   }
-
-  // const cartInUse = props.cartInUse
-
-  // const updateCartOfPlants = async (e) => {
-  //   const plantId = e.target.id
-  //   for (let i = 0; i < wholeCart.plants.length; i++) {
-  //     if (plantId == wholeCart.plants[i]) {
-  //       console.log(wholeCart.plants[i])
-  //       const result = await axios
-  //         .put(
-  //           `http://localhost:3001/api/yourNewGarden/yourNewGarden/c/${cartInUse}`,
-  //           { plants: wholeCart.plants[i] }
-  //         )
-  //         .then((res) => {
-  //           console.log(result.status)
-  //           window.location.reload(false)
-  //         })
-  //       //console.log('removed', wholeCart.plants)
-  //     }
-  //   }
-  // }
 
   cart.map((elem) => console.log(elem.Name))
 
@@ -84,6 +86,7 @@ const Cart = (props) => {
             <h4>Best planted with: {elem.fit}</h4>
           </div>
         ))}
+        <button onClick={fitPlants}>Create</button>
       </div>
     </div>
   )
