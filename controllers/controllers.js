@@ -1,5 +1,6 @@
 const { models } = require('mongoose')
 const { Plant, Cart, Fit } = require('../models')
+const cartSchema = require('../models/cart')
 
 const getAllPlants = async (req, res) => {
   try {
@@ -39,11 +40,10 @@ const createCart = async (req, res) => {
 
 const updatePlantCart = async (req, res) => {
   try {
-    const { id } = req.params
-    const newPlant = await Cart.findByIdAndUpdate(id, {
-      $push: { plants: req.body.plant }
-    })
-    res.json({ newPlant })
+    let cart = await Cart.findById(req.params.id)
+    cart.plants.pull(req.body._id)
+
+    res.send(cart)
   } catch (error) {
     console.log(error)
   }
@@ -59,31 +59,23 @@ const deleteCart = async (req, res) => {
 }
 const getCartElem = async (req, res) => {
   try {
-    const elements = await Cart.find()
+    const elements = await Cart.find({}).populate('plants')
     res.send(elements)
   } catch (error) {
     throw error
   }
 }
-const getFitPlants = async (req, res) => {
+const updateCartElement = async (req, res) => {
   try {
-    const fitPlants = await Fit.find()
-    res.send(fitPlants)
+    const { id } = req.params
+    const newCart = await Cart.findByIdAndUpdate(id, {
+      $pull: { plants: req.body.plantId }
+    })
+    res.json({ newCart })
   } catch (error) {
     throw error
   }
 }
-// const updateCartElement = async (req, res) => {
-//   try {
-//     const { id } = req.params
-//     const newCart = await Cart.findByIdAndUpdate(id, {
-//       $pull: { plants: req.body.plantId }
-//     })
-//     res.json({ newCart })
-//   } catch (error) {
-//     throw error
-//   }
-// }
 
 module.exports = {
   getAllPlants,
@@ -93,5 +85,5 @@ module.exports = {
   findOne,
   getCartElem,
   updatePlantCart,
-  getFitPlants
+  updateCartElement
 }

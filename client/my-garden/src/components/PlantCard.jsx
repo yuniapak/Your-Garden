@@ -34,7 +34,7 @@ navigate(`${plant.Name}`,{state: {plant: plant}})
             <div className='allPlants'>
               {props.allPlants.map((plant) => (
                 <div key={plant.Name} className='plant'>
-                  <img src={plant.image} alt="image is missing" />
+                  <img src={plant.image} alt={plant.Name} />
                   <h3>{plant.Name}</h3>
                   <div className='addMorebutton'>
                   <button id={plant.Name} type='submit' onClick={addToCart}>Add</button>
@@ -54,7 +54,7 @@ navigate(`${plant.Name}`,{state: {plant: plant}})
             {
             searchResults.map((plant)=>(
             <div key = {plant.Name} onClick={props.onClick} className='plant'>
-            <img src={plant.image} alt='image is missing'/>
+            <img src={plant.image} alt={plant.Name}/>
             <h3>{plant.Name}</h3>
             <div className='addMorebutton'>
         

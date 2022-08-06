@@ -29,8 +29,8 @@ const App = () => {
   const getCart = async () => {
     const res = await axios.get(`http://localhost:3001/api/yourNewGarden`)
     setCartElements(res.data[0].plants)
-    console.log('Cart', res.data[0].plants)
-    //  console.log(res.data[0].plants)
+    console.log('Cart', res.data[0])
+
     setCartInUse(res.data[0]._id)
   }
 

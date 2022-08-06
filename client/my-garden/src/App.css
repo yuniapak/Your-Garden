@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
 body {
+  height : 100%;
+  max-width: 100%;
   text-align: center;
   background-color: rgb(82, 105, 97);
   color: rgb(224, 230, 223);
@@ -50,6 +52,7 @@ font-size: 35px;
 }
 .allPlants{
   display: grid;
+  max-width: 100%;
   grid-template-columns: auto auto auto;
 }
 .allPlants button{
@@ -99,7 +102,7 @@ input{
   border-radius: 30px;
 }
 .Cart{
-  position:absolute;
+  max-width: 100%;
   display: grid;
   grid-template-columns: auto auto auto;
 }
@@ -113,10 +116,12 @@ input{
   border-radius: 230px;
 }
 .cartElem{
+  max-width: 100%;
+  height: 80%;
   background: rgb(51, 74, 66);
-  margin: 30px;
+  margin: 20px;
   padding:10px;
-  
+
 }
 .cartElem h3{
   position:relative;
@@ -161,7 +166,30 @@ margin: 10px 0;
   background-color: rgba(51, 74, 66, 0.5);
   padding: 15px;
 }
-
+/* .companion-plants{
+  position: absolute;
+  left:50%;
+  top:170vh;
+} */
+.matched{
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.matched img{
+  width:150px;
+  height: 80px;
+  padding:10px;
+  border-radius: 0px;
+}
+.matchedPlant h1{
+  font-size: 20px;
+}
+.matchedPlant{
+  width: 400px;
+  background-color: bisque;
+  margin:20px;
+}
 @media only screen and (max-width: 390px) {
   body {
   font-size: 10px;

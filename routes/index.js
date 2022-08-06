@@ -12,8 +12,7 @@ router.get('/yourNewGarden', controllers.getCartElem)
 router.post('/yourNewGarden', controllers.createCart)
 router.put('/yourNewGarden/:id', controllers.updatePlantCart)
 router.delete('/yourNewGarden/:id', controllers.deleteCart)
-
+router.put('/yourNewGarde/:id/plant', controllers.updateCartElement)
 //fit
-router.get('/fit', controllers.getFitPlants)
 
 module.exports = router
