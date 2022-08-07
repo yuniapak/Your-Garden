@@ -102,8 +102,8 @@ input{
   border-radius: 30px;
 }
 .Cart{
-  max-width: 100%;
   display: grid;
+  max-width: 100%;
   grid-template-columns: auto auto auto;
 }
 .cartButtons{
@@ -116,21 +116,25 @@ input{
   border-radius: 230px;
 }
 .cartElem{
-  max-width: 100%;
-  height: 80%;
+  max-width: 400px;
+  max-height: 400px;
   background: rgb(51, 74, 66);
   margin: 20px;
   padding:10px;
-
 }
 .cartElem h3{
   position:relative;
-  top: -35px;
+  top: -35px; 
   font-size: 30px;
+}
+.cartElem h4{
+  position:relative;
+  top: -55px; 
+  max-width: 400px;
 }
 .cartElem img{
   position:relative;
-  top: -40px;
+  top: -40px; 
 }
 button{
   padding: 10px;

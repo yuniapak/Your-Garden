@@ -40,10 +40,11 @@ const createCart = async (req, res) => {
 
 const updatePlantCart = async (req, res) => {
   try {
-    let cart = await Cart.findById(req.params.id)
-    cart.plants.pull(req.body._id)
-
-    res.send(cart)
+    const { id } = req.params
+    const newPlant = await Cart.findByIdAndUpdate(id, {
+      $push: { plants: req.body.plant }
+    })
+    res.json({ newPlant })
   } catch (error) {
     console.log(error)
   }

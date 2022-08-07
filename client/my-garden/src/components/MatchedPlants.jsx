@@ -1,5 +1,4 @@
 const MatchedPlants = ({created, arrayOfPlants}) =>{
-
 return(
     <div >
        {created ? (
@@ -15,7 +14,7 @@ return(
                 ))}
                    </div>
                 </div>
-        ) : (<p></p> )
+        ) : (<p>1</p> )
         }
         </div>
 )}

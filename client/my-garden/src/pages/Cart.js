@@ -3,24 +3,26 @@ import { useState } from 'react'
 import MatchedPlants from '../components/MatchedPlants'
 const Cart = (props) => {
   let bed1 = []
+  let cart = []
   const [created, setCreated] = useState(false)
   const [arrayOfPlants, setArrayOfPlants] = useState([])
   const allPlants = props.allPlants
   const cartElements = props.cartElements
-
+  console.log(cartElements)
   //match id for information about plant to display
-  // cartElements.map((elem) => {
-  //   console.log('elem', elem)
-  //   allPlants.filter((plant) => {
-  //     if (elem == plant._id) {
-  //       cart.push(plant)
-  //     }
-  //   })
-  // })
-  // console.log('plants inside variable Cart', cartElements)
+  cartElements.map((elem) => {
+    console.log('elem', elem)
+    allPlants.filter((plant) => {
+      if (elem == plant._id) {
+        cart.push(plant)
+      }
+    })
+  })
+  console.log('plants inside variable Cart', cartElements)
 
   //match plants to fit
   //working but matching in pairs!
+
   const fitPlants = () => {
     for (let i = 0; i < cartElements.length; i++) {
       for (let j = 0; j < cartElements.length; j++) {
@@ -63,7 +65,7 @@ const Cart = (props) => {
     <div>
       <h2>Your plants:</h2>
       <div className="cartButtons">
-        <button onClick={fitPlants}>Create</button>
+        <button onClick={fitPlants}>Create Chart</button>
         <button type="submit" onClick={() => deleteCart()}>
           Clear Cart
         </button>

@@ -21,18 +21,18 @@ const App = () => {
     setAllPlants(res.data)
     //console.log(res.data)
   }
-  useEffect(() => {
-    getPlants()
-    getCart()
-  }, [])
-
   const getCart = async () => {
     const res = await axios.get(`http://localhost:3001/api/yourNewGarden`)
     setCartElements(res.data[0].plants)
     console.log('Cart', res.data[0])
-
+    console.log(res.data[0]._id)
     setCartInUse(res.data[0]._id)
   }
+
+  useEffect(() => {
+    getPlants()
+    getCart()
+  }, [])
 
   return (
     <div>
