@@ -7,7 +7,6 @@ const Cart = (props) => {
 
   const [created, setCreated] = useState(false)
   const [arrayOfPlants, setArrayOfPlants] = useState([])
-  const allPlants = props.allPlants
   const cartElements = props.cartElements
   console.log(cartElements)
   //match plants to fit
@@ -17,11 +16,10 @@ const Cart = (props) => {
     for (let i = 0; i < cartElements.length; i++) {
       for (let j = 0; j < cartElements.length; j++) {
         for (let e = 0; e < cartElements[j].fit.length; e++) {
-          if (cartElements[i].Name == cartElements[j].fit[e]) {
+          if (cartElements[i].Name === cartElements[j].fit[e]) {
             bed1.push(cartElements[i], cartElements[j])
             setArrayOfPlants(bed1)
             setCreated(true)
-
             console.log(bed1)
           }
         }
@@ -31,13 +29,13 @@ const Cart = (props) => {
 
   //create new cart onclick
   const createNewCart = async () => {
-    const result = axios.post(`http://localhost:3001/api/yourNewGarden`)
+    axios.post(`http://localhost:3001/api/yourNewGarden`)
     console.log('new cart made')
   }
   //delete whole cart onclick
   const deleteCart = async () => {
     //const plantId = await cartElements(e.target.id)
-    const remove = await axios
+    await axios
       .delete(`http://localhost:3001/api/yourNewGarden/${props.cartInUse}`)
       .then((res) => {
         console.log(res.status)
@@ -48,7 +46,7 @@ const Cart = (props) => {
   }
   const removeOnePlant = async (e) => {
     let plantId = e.target.id
-    const removePlant = await axios.put(
+    await axios.put(
       `http://localhost:3001/api/yourNewGarden/${props.cartInUse}/plant`,
       { plantId: plantId }
     )
@@ -66,23 +64,25 @@ const Cart = (props) => {
           Clear Cart
         </button>
       </div>
-      <div className="Cart">
-        {cartElements.map((elem) => (
-          <div key={elem.Name} className="cartElem">
-            <button
-              id={elem._id}
-              className="delete"
-              type="submit"
-              onClick={removeOnePlant}
-            >
-              X
-            </button>
-            <h3>{elem.Name}</h3>
-            <img src={elem.image} />
-            <h4>Best planted with: {elem.fit}</h4>
-          </div>
-        ))}
-      </div>
+      {cartElements.length !== 0 ? (
+        <div className="Cart">
+          {cartElements.map((elem) => (
+            <div key={elem.Name} className="cartElem">
+              <button
+                id={elem._id}
+                className="delete"
+                type="submit"
+                onClick={removeOnePlant}
+              >
+                X
+              </button>
+              <h3>{elem.Name}</h3>
+              <img src={elem.image} alt={elem.Name} />
+              <h4>Best planted with: {elem.fit}</h4>
+            </div>
+          ))}
+        </div>
+      ) : null}
       <MatchedPlants created={created} arrayOfPlants={arrayOfPlants} />
     </div>
   )
