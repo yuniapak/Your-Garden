@@ -10,7 +10,8 @@
     "nodemon": "^2.0.19"
   },
   "engines": {
-    "node": "18.9.0"
+    "node": "18.9.0",
+    "npm": "8.19.1"
   },
   "scripts": {
     "build": "cd client && cd my-garden && rm -rf build && npm run build",
