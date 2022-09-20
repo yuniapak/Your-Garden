@@ -12,7 +12,7 @@ const MyGarden = (props) => {
   const getSearchResults = async (e) => {
     e.preventDefault()
     const result = await axios.get(
-      `http://localhost:3001//api/plant/Name?search=${searchQuery}`
+      `http://localhost:3001/api/plant/Name?search=${searchQuery}`
     )
     setSearchResults(result.data)
     console.log(searchResults)

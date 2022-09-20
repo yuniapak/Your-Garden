@@ -29,16 +29,14 @@ const Cart = (props) => {
 
   //create new cart onclick
   const createNewCart = async () => {
-    axios.post(`https://yourgarden.netlify.app/api/yourNewGarden`)
+    axios.post(`http://localhost:3001/api/yourNewGarden`)
     console.log('new cart made')
   }
   //delete whole cart onclick
   const deleteCart = async () => {
     //const plantId = await cartElements(e.target.id)
     await axios
-      .delete(
-        `https://yourgarden.netlify.app/api/yourNewGarden/${props.cartInUse}`
-      )
+      .delete(`http://localhost:3001/api/yourNewGarden/${props.cartInUse}`)
       .then((res) => {
         console.log(res.status)
         window.location.reload(false)
@@ -49,7 +47,7 @@ const Cart = (props) => {
   const removeOnePlant = async (e) => {
     let plantId = e.target.id
     await axios.put(
-      `https://yourgarden.netlify.app/api/yourNewGarden/${props.cartInUse}/plant`,
+      `http://localhost:3001/api/yourNewGarden/${props.cartInUse}/plant`,
       { plantId: plantId }
     )
     console.log(plantId)
