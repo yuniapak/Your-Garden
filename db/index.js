@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-require('dotenv').config() // Add this line
+require('dotenv').config()
 
 let dbUrl =
   process.env.NODE_ENV === 'production'
@@ -8,7 +8,7 @@ let dbUrl =
 
 mongoose
 
-  .connect(dbUrl)
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log('Successfully connected to MongoDB.')
   })

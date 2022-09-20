@@ -15,14 +15,12 @@ const App = () => {
   const [cartInUse, setCartInUse] = useState('')
 
   const getPlants = async () => {
-    const res = await axios.get(`https://yourgarden.netlify.app/api/plant`)
+    const res = await axios.get(`http://localhost:3001/api/plant`)
     setAllPlants(res.data)
-    //console.log(res.data)
+    console.log(res.data)
   }
   const getCart = async () => {
-    const res = await axios.get(
-      `https://yourgarden.netlify.app/api/yourNewGarden`
-    )
+    const res = await axios.get(`http://localhost:3001/api/yourNewGarden`)
     setCartElements(res.data[0].plants)
     console.log('Cart', res.data[0])
     console.log(res.data[0]._id)
