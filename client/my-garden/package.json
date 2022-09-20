@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "proxy": "http://localhost:3001"
+    "proxy": "https://yourgarden.netlify.app"
   },
   "eslintConfig": {
     "extends": [
