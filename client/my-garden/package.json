@@ -2,7 +2,7 @@
   "name": "my-garden",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://https://chic-parfait-d2d02b.netlify.app/",
+  "homepage": "//chic-parfait-d2d02b.netlify.app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
