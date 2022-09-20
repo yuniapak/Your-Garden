@@ -10,13 +10,13 @@ const PlantCard = (props) =>{
 //update Cart onClick
 
 const getPlant= async(selectedPlant) =>{
-    const plant = await axios.get(`http://localhost:3001/api/plant/${selectedPlant}`)
+    const plant = await axios.get(`https://yourgarden.netlify.app/api/plant/${selectedPlant}`)
 return (plant.data._id)
 }
 
 const addToCart = async (e) => { 
     const plantId = await getPlant(e.target.id) 
-    const res = await axios.put(`http://localhost:3001/api/yourNewGarden/${cartId}`,{plant: plantId})
+    const res = await axios.put(`https://yourgarden.netlify.app/api/yourNewGarden/${cartId}`,{plant: plantId})
     console.log(plantId)
     console.log(res.data)
 // '    window.location.reload(false)'
